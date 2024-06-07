@@ -5,6 +5,9 @@ html,body{
   margin: 0;
   padding: 0;
 }
+a{
+  text-decoration: none;
+}
 
 .mainBanner{
   width: 100%;
@@ -40,13 +43,22 @@ html,body{
 }
 
 .container{
-  width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+.wrapper{
+  width: 100%;
+  max-width: 1320px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 10px;
 }
 
 .sideMenu {
-  width: 100%;
+  width: 170px;
   display: flex;
   flex-direction: column;
   padding: 0 10px;
@@ -66,22 +78,12 @@ html,body{
 .navMenu li a{
   display: flex;
   color: #FFF;
-  text-decoration: none;
   transform: translateX(0px);
 }
 .navMenu li a:blank{
   color: #FFF;
-  text-decoration: none;
 }
-.navMenu li:hover{
-  padding: 10px 0;
-  background-color: orangered;
-  border-radius: 20px;
-}
-.navMenu li:hover a{
-  transform: translateX(12px);
-  transition: transform 0.3s ease 0.1s;
-}
+
 .btn{
   height: 40px;
   background-color: #000;
@@ -89,27 +91,15 @@ html,body{
   border: 1px solid #000;
   text-align: left;
   font-size: 16px;
-  padding: 0 14px;
+  padding-left: 10px;
 }
 .btn:after{
   content:">";
-  padding-left: 14px;
-}
-
-.btn:hover{
-  background-color: #FFF;
-  color: #000;
-  transition: all 0.4s ease-in-out;
-  display: flex;
-  align-items: center;
-}
-.btn:hover:after{
-  content:">";
-  transform: translateX(50px);
-  transition: all 0.4s ease-in-out;
+  padding-left: 10px;
 }
 
 .itemWrap{
+  width: calc(100% - 170px);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -146,7 +136,7 @@ html,body{
   flex-direction: column;
   justify-content: flex-end;
   align-content: flex-start;
-  padding: 20px;
+  padding: 10px;
   z-index: 3;
 }
 
@@ -178,25 +168,135 @@ html,body{
   opacity: 0;
 }
 
-.item:hover:after{
-  opacity: 1;
-}
-.item:hover .imgBox img {
-  transform: scale(1.1);
-  filter: blur(3px);
-}
-.item:hover .textBox__name {
-  opacity: 1;
-  transform: translateY(-30px);
-  transition: transform ease-in-out 0.2s;
-}
-.item:hover .textBox__price {
-  opacity: 1;
-  transform: translateY(-30px);
-  transition: transform ease-in-out 0.4s;
+
+@media screen and (max-width: 767px) {
+  /* mobile */
+  .mainBanner{
+    height: 160px;
+    margin-bottom: 0;
+  }
+  .mainBanner .text{
+    font-size: 26px;
+  }
+  .wrapper{
+    flex-direction: column;
+    padding: 0;
+  }
+  .sideMenu{
+    width: 100%;
+    padding: 0;
+  }
+  .navMenu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 0;
+    padding: 0;
+  }
+  .navMenu li a{
+    font-size: 14px;
+    padding: 12px 10px;
+  }
+  .btn{
+    display: none;
+  }
+  .itemWrap{
+    width: 100%;
+    padding: 12px;
+  }
+  .item{
+    width: calc(50% - 7px);
+    border-radius: 0;
+    overflow: visible;
+    border: 1px solid #DDD;
+  }
+  .textBox{
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+  .textBox p {
+    color: #000;
+  }
+  .textBox__name{
+    font-size: 18px;
+    opacity: 1;
+  }
+  .textBox__price{
+    font-size: 12px;
+    opacity: 1;
+  }
 }
 
-.item:after,
-.item .imgBox img{
-  transition: all 0.4s ease-in-out;
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  /* tablet */
+  .item{
+    border-radius: 0;
+    overflow: visible;
+    border: 1px solid #DDD;
+  }
+  .textBox{
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+  .textBox p {
+    color: #000;
+  }
+  .textBox__name{
+    font-size: 18px;
+    opacity: 1;
+  }
+  .textBox__price{
+    font-size: 12px;
+    opacity: 1;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .navMenu li:hover{
+    padding: 10px 0;
+    background-color: rgba(255, 145, 0);
+    border-radius: 20px;
+  }
+  .navMenu li:hover a{
+    transform: translateX(12px);
+    transition: transform 0.3s ease-in-out;
+  }
+  .btn:hover{
+    background-color: #FFF;
+    color: #000;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+  }
+  .btn:hover:after{
+    content:">";
+    transform: translateX(40px);
+    transition: all 0.3s ease-in-out;
+  }
+  .item:hover:after{
+    opacity: 1;
+  }
+  .item:hover .imgBox img {
+    transform: scale(1.1);
+    filter: blur(3px);
+  }
+  .item:hover .textBox__name {
+    opacity: 1;
+    transform: translateY(-30px);
+    transition: transform ease-in-out 0.2s;
+  }
+  .item:hover .textBox__price {
+    opacity: 1;
+    transform: translateY(-30px);
+    transition: transform ease-in-out 0.4s;
+  }
+  
+  .item:after,
+  .item .imgBox img{
+    transition: all 0.4s ease-in-out;
+  }
+  
 }
